@@ -1,0 +1,308 @@
+/* Background style */
+body {
+    background-color: #ffc3da;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+        url("ss3.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: white; /* makes text readable */
+}
+
+
+/* Envelope container */
+.envelope-wrapper {
+    height: 250px;
+    padding-bottom: 60px;
+}
+
+#envelope {
+    position: relative;
+    height: 190px;
+    width: 280px;
+    margin: auto;
+    top: 50%;
+    background-color: #FF6863;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+/* Envelope and letter */
+.front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3;
+}
+
+.flap {
+    border-top: 98px solid #FF6863;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-bottom: 82px solid transparent;
+    transform-origin: top;
+    transition: transform 0.4s ease;
+}
+
+.pocket {
+    border-left: 140px solid #FF8BA0;
+    border-right: 140px solid #FF8BA0;
+    border-bottom: 100px solid #FFA8B5;
+    border-top: 90px solid transparent;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.text1{
+    height: fit-content;
+}
+
+/* Letter */
+.letter {
+    position: relative;
+    background-color: rgb(223, 144, 187);
+    width: 90%;
+    height: 95%;
+    top: 5%;
+    border-radius: 10px;
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .12);
+    margin: auto;
+    transition: transform 0.4s ease;
+}
+
+/* Opening effect */
+.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.open .letter {
+    transform: translateY(-80px);
+    z-index: 2;
+}
+
+/* Button styles */
+.reset button {
+    font-weight: 800;
+    background-color: transparent;
+    border: solid 2px #FF6863;
+    border-radius: 4px;
+    color: #FF6863;
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 20px;
+    padding: 10px;
+    min-width: 150px;
+    cursor: pointer;
+}
+
+.reset button:hover {
+    background-color: #FF6863;
+    color: white;
+}
+
+/* Title style */
+.valentine {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #141414;
+    font-size: 50px;
+    margin-top: 100px;
+}
+
+.line4{
+    margin-top: -10px;
+}
+
+/* Hearts floating out of the letter */
+.heart {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: url('heart.png') no-repeat center center;
+    background-size: contain;
+    animation: floatUp 1s ease-in-out, fadeOut 1s ease-in-out; /* Faster animations */
+    left: 50%; /* Position hearts in the horizontal center */
+    top: 50%; /* Position hearts in the vertical center */
+    transform: translate(-50%, -50%); /* Precisely center the hearts on both axes */
+}
+
+/* Animation for moving up */
+@keyframes floatUp {
+    0% {
+        transform: translate(-50%, -50%) translateY(0); /* Start from the letter center */
+    }
+    100% {
+        transform: translate(-50%, -50%) translateY(-450px); /* Fast upward movement */
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0; /* Hearts fade out as they rise */
+    }
+}
+
+/* Hearts appearing on the cursor */
+.cursor-heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('heart.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    opacity: 1;
+    animation: disappear 1s linear;
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+
+
+/* ===============================
+   VALENTINE SECTION WITH GIF
+================================= */
+
+.valentine-section {
+    text-align: center;
+    margin-top: 40px;
+    animation: fadeInValentine 2s ease forwards;
+    opacity: 0;
+}
+
+.valentine-text {
+    font-size: 32px;
+    color: white;
+    text-shadow: 0 0 15px #ff99cc,
+                 0 0 25px #ff4da6,
+                 0 0 40px #ff1a8c;
+    margin-bottom: 20px;
+}
+
+.valentine-gif {
+    width: 250px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.valentine-gif:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 1);
+}
+
+@keyframes fadeInValentine {
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+/* ===============================
+   PREMIUM BACK BUTTON
+================================= */
+
+.back-btn {
+    position: fixed;
+    top: 90px; /* mid upper-left */
+    left: 300px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: white;
+
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+@keyframes glowBorder {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.back-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+}
+
+/* Arrow animation */
+.back-btn .arrow {
+    transition: transform 0.3s ease;
+}
+
+.back-btn:hover .arrow {
+    transform: translateX(-5px);
+}
+
+
+/* ===============================
+   ENHANCED FALLING FLOWERS
+================================= */
+
+.flower {
+    position: fixed;
+    top: -60px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.9;
+    animation: fall linear forwards;
+}
+
+/* Vertical falling */
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh);
+        opacity: 0.7;
+    }
+}
+
+/* Side sway */
+@keyframes sway {
+    0%   { transform: translateX(0px) rotate(0deg); }
+    25%  { transform: translateX(15px) rotate(90deg); }
+    50%  { transform: translateX(-15px) rotate(180deg); }
+    75%  { transform: translateX(10px) rotate(270deg); }
+    100% { transform: translateX(0px) rotate(360deg); }
+}
+
